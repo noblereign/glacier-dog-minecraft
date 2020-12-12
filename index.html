@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta property="og:title" content="Minecraft">
+		<meta property="og:site_name" content="Glacier Dog">
+		<meta property="og:url" content="https://about.glacier.dog/">
+		<meta property="og:description" content="Go here on a browser to check the server status, or enter it into Minecraft to play.">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="https://cdn.jsdelivr.net/gh/noblereign/noblereign.github.io/glacierdog.jpg">
+	
+		<meta name="robots" content="noindex" />
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<meta name="Description" CONTENT="An IP I use for hosting Minecraft servers.">
+	
+		<script src="https://cdn.jsdelivr.net/gh/noblereign/noblereign.github.io/snowstorm.js"></script>
+        <title>M.C. Glacier Dog</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/noblereign/noblereign.github.io/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/noblereign/noblereign.github.io/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/noblereign/noblereign.github.io/favicon-16x16.png">
+		<link rel="manifest" href="https://cdn.jsdelivr.net/gh/noblereign/noblereign.github.io/site.webmanifest">
+        <link rel="stylesheet" href="style.css">
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;500;600;700&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+			a:link {
+			  color: #ffd633;
+			  background-color: transparent;
+			  text-decoration: none;
+			  -webkit-transition: all 250ms ease-in-out;
+			  -moz-transition: all 250ms ease-in-out;
+			  -ms-transition: all 250ms ease-in-out;
+			  -o-transition: all 250ms ease-in-out;
+			  transition: all 250ms ease-in-out;
+			}
+			a:visited {
+			  color: #ffd633;
+			  background-color: transparent;
+			}
+			a:hover {
+			  color: #e8e6e3;
+			  background-color: transparent;
+			  text-shadow: 0 0 6px #FFFFFF;
+			}
+			a:active {
+			  color: #AAAAAA;
+			  background-color: transparent;
+			  text-shadow: 0 0 12px #FFFFFF;
+			}
+		</style>
+    </head>
+    <body>
+		<main>
+			<div>
+				<p id="suffix">checking <span id="response">status...</span></p>
+				<p id="joinmessage" style="display: none;">Join in on the fun @ <span id="ip" style="font-family:Ubuntu Mono; background-color: #242424;">mc.glacier.dog</span></p>
+			</div>
+		</main>
+		<footer>
+			<p>*this is not guaranteed to work at all</p>
+		</footer>
+    </body>
+	<script src="https://knockoutjs.com/downloads/knockout-3.5.1.js"></script>
+	<script src="checkstatus.js"></script>
+</html>
