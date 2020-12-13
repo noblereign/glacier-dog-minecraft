@@ -1,34 +1,5 @@
-function ping(ip, callback) {
-    if (!this.inUse) {
-        this.status = 'unchecked';
-        this.inUse = true;
-        this.callback = callback;
-        this.ip = ip;
-        var _that = this;
-        this.img = new Image();
-        this.img.onload = function () {
-            _that.inUse = false;
-            _that.callback('responded');
 
-        };
-        this.img.onerror = function (e) {
-            if (_that.inUse) {
-                _that.inUse = false;
-                _that.callback('responded', e);
-            }
-
-        };
-        this.start = new Date().getTime();
-        this.img.src = "http://" + ip;
-        this.timer = setTimeout(function () {
-            if (_that.inUse) {
-                _that.inUse = false;
-                _that.callback('timeout');
-            }
-        }, 1500);
-    }
-}
-var PingModel = function (servers) {
+/* var PingModel = function (servers) {
     var self = this;
     var myServers = [];
     ko.utils.arrayForEach(servers, function (location) {
@@ -57,5 +28,42 @@ var PingModel = function (servers) {
         });
     });
 };
-var komodel = new PingModel(['mc.glacier.dog:25565']);
-ko.applyBindings(komodel);
+var komodel = new PingModel(['minecraft.glacier.dog:25565']); */
+
+var xmlhttp = new XMLHttpRequest();
+var url = "https://api.mcsrvstat.us/2/minecraft.glacier.dog:25565";
+
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr = JSON.parse(this.responseText);
+    myFunction(myArr);
+  }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(server) {
+	const suff = document.getElementById("suffix");
+	suff.innerHTML = 'The server is currently <span id="response">...</span>';
+	if (server.online) {
+		const response = document.getElementById("response");
+		const joinMessage = document.getElementById("joinmessage");
+		const count = document.getElementById("count");
+		const motd = document.getElementById("motd");
+		const version = document.getElementById("version");
+		response.innerHTML = "UP";
+		response.setAttribute('style', "color: #5af754; text-shadow: 0 0 5px #5af754;");
+		count.innerHTML = server.players.online + '/<span id="max">' + server.players.max + '</span> online';
+		motd.innerHTML = '“' + server.motd.html + '”';
+		version.innerHTML = 'running on version ' + server.version
+		count.setAttribute('style', "");	
+		motd.setAttribute('style', "");	
+		version.setAttribute('style', "");	
+		joinMessage.setAttribute('style', "");	
+	}
+	else {
+		const response = document.getElementById("response");
+		response.innerHTML = "DOWN";
+		response.setAttribute('style', "color: #f24646; text-shadow: 0 0 5px #f24646;");
+	}
+}
